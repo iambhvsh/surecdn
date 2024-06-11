@@ -8,3 +8,9 @@
     This directory contains all Tailwind CSS files essential for styling and layout of this project. Leveraging the power of Tailwind CSS, developers can efficiently create consistent and visually appealing designs by composing utility classes directly in their HTML markup.
   </p>
 </div>
+
+<h1 align="center">Usage</h1>
+
+``` html
+https://cdn.jsdelivr.net/gh/iambhvsh/surecdn@main/css/tailwind/3.4.4.js
+```
