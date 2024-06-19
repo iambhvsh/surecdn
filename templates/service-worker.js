@@ -1,6 +1,5 @@
 const CACHE_NAME = 'smoothx';
 const urlsToCache = [
-  '/index.html',
   'https://cdn.jsdelivr.net/gh/iambhvsh/surecdn/templates/css/smoothx.css',
   'https://cdn.jsdelivr.net/gh/iambhvsh/surecdn/templates/js/smoothx.js',
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL6VZWGiWn_LdaW-Pi1c3C_HDuVGuRHiTtU2sVNCxfBKN_2cBfOiUTHXs3&s=10',
