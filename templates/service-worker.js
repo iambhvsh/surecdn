@@ -1,6 +1,7 @@
 const CACHE_NAME = 'smoothx';
 const urlsToCache = [
   'https://cdn.jsdelivr.net/gh/iambhvsh/surecdn/templates/css/smoothx.css',
+  'https://surecdn.vercel.app/templates/js/smoothx.js',
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL6VZWGiWn_LdaW-Pi1c3C_HDuVGuRHiTtU2sVNCxfBKN_2cBfOiUTHXs3&s=10',
   'https://cdn.jsdelivr.net/gh/iambhvsh/surecdn/templates/data.json',
   'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js',
