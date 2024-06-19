@@ -1,0 +1,342 @@
+/* SmoothX CSS */
+
+@font-face {
+
+  font-family: "OnePlus Sans Regular";
+  src: url(/fonts/OnePlusSans3.0En-VF.woff) format("woff2"),
+    url(/fonts/OnePlusSans3.0En-VF.woff) format("woff"),
+    url(/fonts/OnePlusSans3.0En-VF.ttf) format("truetype");
+  font-variation-settings: 'wght' 400;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap
+}
+
+@font-face {
+  font-family: "OnePlus Sans Medium";
+  src: url(/fonts/OnePlusSans3.0En-VF.woff) format("woff2"),
+    url(/fonts/OnePlusSans3.0En-VF.woff) format("woff"),
+    url(/fonts/OnePlusSans3.0En-VF.ttf) format("truetype");
+  font-variation-settings: 'wght' 500;
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap
+}
+
+@font-face {
+  font-family: "OnePlus Sans Bold";
+  src: url(/fonts/OnePlusSans3.0En-VF.woff) format("woff2"),
+    url(/fonts/OnePlusSans3.0En-VF.woff) format("woff"),
+    url(/fonts/OnePlusSans3.0En-VF.ttf) format("truetype");
+  font-variation-settings: 'wght' 700;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap
+}
+
+@font-face {
+  font-family: OnePlus Sans Display Light;
+  font-display: swap;
+  src: url(OnePlusSansDisplay-45Lt.woff) format("woff2"),
+    url(/fonts/OnePlusSansDisplay-45Lt.woff) format("woff"),
+    url(/fonts/OnePlusSansDisplay-45Lt.ttf) format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+html body,
+html {
+  font-family: 'OnePlus Sans Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
+}
+
+.font-medium {
+  font-family: 'OnePlus Sans Medium', 'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
+}
+
+.font-bold {
+  font-family: 'OnePlus Sans Bold', 'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
+}
+
+/* Gradients */
+
+/* Borders */
+
+.border-gradient-warm {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, #E0543A, #E68D5B);
+  background-clip: border-box;
+  border-image: linear-gradient(to right, #E0543A 0%, #E68D5B 100%) 1
+}
+
+.border-gradient-cool {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, #4D6AEF, #D1465F);
+  background-clip: border-box;
+  border-image: linear-gradient(to right, #4D6AEF 0%, #D1465F 100%) 1
+}
+
+.border-gradient-sunset {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, #093656, #D1490F);
+  background-clip: border-box;
+  border-image: linear-gradient(to right, #093656 0%, #D1490F 100%) 1
+}
+
+.border-gradient-ocean {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, #2090B8, #C7CBA1);
+  background-clip: border-box;
+  border-image: linear-gradient(to right, #2090B8 0%, #C7CBA1 100%) 1
+}
+
+.border-gradient-rainbow {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, #E64A4A, #D9B733, #5EB864, #3D7ADF, #3D006A);
+  background-clip: border-box;
+  border-image: linear-gradient(to right, #E64A4A 0%, #D9B733 20%, #5EB864 40%, #3D7ADF 60%, #3D006A 80%) 1
+}
+
+.border-gradient-pastel {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, #82A6DA, #A2C7E8);
+  background-clip: border-box;
+  border-image: linear-gradient(to right, #82A6DA 0%, #A2C7E8 100%) 1
+}
+
+.border-gradient-neon {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, #C73B9D, #920048);
+  background-clip: border-box;
+  border-image: linear-gradient(to right, #C73B9D 0%, #920048 100%) 1
+}
+
+.border-gradient-earth {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, #205E36, #93BD8E);
+  background-clip: border-box;
+  border-image: linear-gradient(to right, #205E36 0%, #93BD8E 100%) 1
+}
+
+.border-gradient-purple-haze {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, #6C1DB6, #3800B0);
+  background-clip: border-box;
+  border-image: linear-gradient(to right, #6C1DB6 0%, #3800B0 100%) 1
+}
+
+.border-gradient-flamingo {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, #C01E0D, #C88313);
+  background-clip: border-box;
+  border-image: linear-gradient(to right, #C01E0D 0%, #C88313 100%) 1
+}
+
+/* Background */
+
+.background-gradient-warm {
+  background: linear-gradient(to right, #E0543A, #E68D5B)
+}
+
+.background-gradient-cool {
+  background: linear-gradient(to right, #4D6AEF, #D1465F)
+}
+
+.background-gradient-sunset {
+  background: linear-gradient(to right, #093656, #D1490F)
+}
+
+.background-gradient-ocean {
+  background: linear-gradient(to right, #2090B8, #C7CBA1)
+}
+
+.background-gradient-rainbow {
+  background: linear-gradient(to right, #E64A4A, #D9B733, #5EB864, #3D7ADF, #3D006A)
+}
+
+.background-gradient-pastel {
+  background: linear-gradient(to right, #82A6DA, #A2C7E8)
+}
+
+.background-gradient-neon {
+  background: linear-gradient(to right, #C73B9D, #920048)
+}
+
+.background-gradient-earth {
+  background: linear-gradient(to right, #205E36, #93BD8E)
+}
+
+.background-gradient-purple-haze {
+  background: linear-gradient(to right, #6C1DB6, #3800B0)
+}
+
+.background-gradient-flamingo {
+  background: linear-gradient(to right, #C01E0D, #C88313)
+}
+
+.background-gradient-deep-space {
+  background: linear-gradient(to right, #00031D, #00366C)
+}
+
+.background-gradient-emerald-water {
+  background: linear-gradient(to right, #2A6B3D, #3E98A9)
+}
+
+.background-gradient-citrus-peel {
+  background: linear-gradient(to right, #E06D06, #E6A32E)
+}
+
+.background-gradient-rose-water {
+  background: linear-gradient(to right, #B2486C, #4A9BB2)
+}
+
+.background-gradient-aqua-marine {
+  background: linear-gradient(to right, #131B54, #1E9FAE)
+}
+
+.background-gradient-peach {
+  background: linear-gradient(to right, #BB3044, #DFC999)
+}
+
+.background-gradient-royal {
+  background: linear-gradient(to right, #0F1622, #1C2A3D)
+}
+
+.background-gradient-frosty-sky {
+  background: linear-gradient(to right, #223B4A, #19262D, #0A1215)
+}
+
+.text-gradient-warm {
+  background: linear-gradient(to right, #E0543A, #E68D5B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-cool {
+  background: linear-gradient(to right, #4D6AEF, #D1465F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-sunset {
+  background: linear-gradient(to right, #093656, #D1490F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-ocean {
+  background: linear-gradient(to right, #2090B8, #C7CBA1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-rainbow {
+  background: linear-gradient(to right, #E64A4A, #D9B733, #5EB864, #3D7ADF, #3D006A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-pastel {
+  background: linear-gradient(to right, #82A6DA, #A2C7E8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-neon {
+  background: linear-gradient(to right, #C73B9D, #920048);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-earth {
+  background: linear-gradient(to right, #205E36, #93BD8E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-purple-haze {
+  background: linear-gradient(to right, #6C1DB6, #3800B0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-flamingo {
+  background: linear-gradient(to right, #C01E0D, #C88313);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-deep-space {
+  background: linear-gradient(to right, #00031D, #00366C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-emerald-water {
+  background: linear-gradient(to right, #2A6B3D, #3E98A9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-citrus-peel {
+  background: linear-gradient(to right, #E06D06, #E6A32E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-rose-water {
+  background: linear-gradient(to right, #B2486C, #4A9BB2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-peach {
+  background: linear-gradient(to right, #BB3044, #DFC999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-royal {
+  background: linear-gradient(to right, #0F1622, #1C2A3D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
+
+.text-gradient-frosty-sky {
+  background: linear-gradient(to right, #223B4A, #19262D, #0A1215);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent
+}
