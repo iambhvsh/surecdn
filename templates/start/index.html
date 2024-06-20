@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>SmoothX</title>
+
+<meta name="title" content="SmoothX" />
+
+<meta name="description" content="Superfast, Scalable & Responsive template created in Html, Tailwind CSS and JavaScript." />
+
+<meta property="og:type" content="website" />
+
+<meta property="og:url" content="https://example.com" />
+
+<meta property="og:title" content="SmoothX" />
+
+<meta property="og:description" content="Superfast, Scalable & Responsive template created in Html, Tailwind CSS and JavaScript." />
+
+<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL6VZWGiWn_LdaW-Pi1c3C_HDuVGuRHiTtU2sVNCxfBKN_2cBfOiUTHXs3&s=10" />
+
+<meta property="twitter:card" content="summary_large_image" />
+
+<meta property="twitter:url" content="https://example.com" />
+
+<meta property="twitter:title" content="SmoothX" />
+
+<meta property="twitter:description" content="Superfast, Scalable & Responsive template created in Html, Tailwind CSS and JavaScript." />
+
+<meta property="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL6VZWGiWn_LdaW-Pi1c3C_HDuVGuRHiTtU2sVNCxfBKN_2cBfOiUTHXs3&s=10" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iambhvsh/surecdn/templates/css/smoothx.css">
+
+</head>
+
+<body class="bg-white select-none">
+
+<header class="bg-transparent backdrop-filter backdrop-blur-md fixed w-full z-[999]">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<div class="flex items-center justify-between h-16">
+
+<div class="flex items-center">
+
+<span class="text-2xl text-gradient-rose-water font-bold">
+
+SmoothX
+
+</span>
+
+</div>
+
+<div class="hidden md:flex items-center">
+
+<div class="ml-10 flex items-baseline space-x-4">
+
+<a href="#" class="text-sm font-medium">Home</a>
+
+<a href="#" class="text-sm font-medium">About</a>
+
+<a href="#" class="text-sm font-medium">Services</a>
+
+<a href="#" class="text-sm font-medium">Contact</a>
+
+</div>
+
+</div>
+
+<div class="hidden md:flex items-center relative">
+
+<input type="text" id="searchInputDesktop" class="border border-gray-300 bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-48" placeholder="Search Docs" />
+
+<div id="searchResultsDesktop" class="absolute top-full w-48 rounded-b-md shadow-lg mt-1 hidden"></div>
+
+<button class="ml-2 relative text-white bg-black rounded-full px-2 py-2 text-sm font-bold mt-2 md:mt-0 transition-all duration-300 ease-in-out hover:bg-white hover:text-black hover:border hover:border-black flex items-center select-none">
+
+<ion-icon name="search" class="text-2xl"></ion-icon>
+
+</button>
+
+</div>
+
+<div class="md:hidden">
+
+<button id="menuButton" class="focus:outline-none">
+
+<ion-icon name="ellipsis-horizontal-circle-outline" class="text-3xl"></ion-icon>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<div id="dropdownMenu" class="md:hidden bg-transparent backdrop-filter backdrop-blur-md fixed top-16 left-0 w-full h-auto z-[999] hidden">
+
+<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+
+<a href="#" class="block px-3 py-2 rounded-md text-base font-medium">Home</a>
+
+<a href="#" class="block px-3 py-2 rounded-md text-base font-medium">About</a>
+
+<a href="#" class="block px-3 py-2 rounded-md text-base font-medium">Services</a>
+
+<a href="#" class="block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+
+<div class="flex items-center relative w-full">
+
+<input type="text" id="searchInputMobile" class="bg-zinc-900 text-white h-10 px-5 pr-10 mx-2 rounded-full text-sm focus:outline-none w-full" placeholder="Search..." />
+
+<div id="searchResultsMobile" class="absolute top-full bg-zinc-900 w-full rounded-md shadow-lg mt-1 hidden" ></div>
+
+</div>
+
+</div>
+
+</div>
+
+<main id="main" class="pt-24 pb-20">
+
+<div class="max-w-7xl mx-auto px-4 py-12 sm:px-[100px] lg:px-8 text-center">
+
+<h1 class="text-4xl font-bold text-gradient-rose-water py-2">
+
+SmoothX
+
+</h1>
+
+<p>
+
+Experience unparalleled smoothness and speed with our cutting-edge template, powered by Html, Tailwind CSS and Javascript. This combination harnesses the robust performance and the efficient design capabilities of Tailwind CSS, ensuring a seamless and visually stunning user experience. Choose our template for a powerful, fast, and super smooth web development process.
+
+</p>
+
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+<div id="card1" class="bg-white rounded-lg shadow-xl p-6 text-center">
+
+<p class="text-amber-300">
+
+<ion-icon name="flash" class="text-5xl"></ion-icon>
+
+</p>
+
+<h2 class="text-xl font-bold mb-4">Fast</h2>
+
+<p>
+
+Leveraging the capabilities of Tailwind CSS for rapid development and intuitive user experiences, we have integrated a Service Worker to cache all necessary files. This ensures that, upon subsequent visits, the page utilizes files stored in your local storage, enhancing performance and reliability.
+
+</p>
+
+<a href="/working" class="flex items-center justify-center mt-3 text-blue-500">
+
+Check how this works
+
+<ion-icon name="chevron-forward" class="ml-1"></ion-icon>
+
+</a>
+
+</div>
+
+<div id="card2" class="bg-white rounded-lg shadow-xl p-6 text-center">
+
+<p class="text-blue-500">
+
+<ion-icon name="dice" class="text-5xl"></ion-icon>
+
+</p>
+
+<h2 class="text-xl font-bold mb-4">Scalable</h2>
+
+<p>
+
+Our template enable the efficient development of large-scale applications with ease.
+
+</p>
+
+</div>
+
+<div id="card3" class="bg-white rounded-lg shadow-xl p-6 text-center">
+
+<p class="text-pink-500">
+
+<ion-icon name="desktop-outline" class="text-5xl"></ion-icon>
+
+</p>
+
+<h2 class="text-xl font-bold mb-4">Responsive</h2>
+
+<p>
+
+Ensure optimal performance and appearance across all devices with our fully responsive designs.
+
+</p>
+
+</div>
+
+<div id="card4" class="bg-white rounded-lg shadow-xl p-6 text-center">
+
+<p class="text-red-500">
+  
+<ion-icon name="desktop-outline" class="text-5xl"></ion-icon>
+
+</p>
+
+<h2 class="text-xl font-bold mb-4">Customizable</h2>
+
+<p>
+
+Easily customize the template to meet specific project requirements and branding needs.
+
+</p>
+
+</div>
+
+</div>
+
+<button id="clear-data" class="fixed bg-transparent border text-red-500 backdrop-filter backdrop-blur-md left-3 bottom-3 py-2 px-2 text-center flex rounded-full text-xl transition-all duration-300 ease-in-out">
+
+<ion-icon name="trash"></ion-icon>
+
+</button>
+
+<button id="theme-toggle" class="fixed bg-transparent border text-black backdrop-filter backdrop-blur-md right-3 bottom-3 py-2 px-2 text-center flex rounded-full text-xl transition-all duration-300 ease-in-out">
+
+<ion-icon name="moon"></ion-icon>
+
+</button>
+
+</main>
+
+<footer id="footer" class="bg-white py-10 text-black">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+<div class="text-center">
+
+<span class="text-2xl bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 font-bold bg-clip-text text-transparent">
+
+SmoothX
+
+</span>
+
+<span class="mt-1 block text-gradient-rose-water">
+
+user@smoothx.com
+
+</span>
+
+</div>
+
+<div class="text-center">
+
+<ul class="space-y-2">
+
+<li>
+
+<a href="#" class="hover:text-white transition duration-300">
+
+Privacy Policy
+
+</a>
+
+</li>
+
+<li>
+
+<a href="#" class="hover:text-white transition duration-300">
+
+Terms of Service
+
+</a>
+
+</li>
+
+<li>
+  
+<a href="#" class="hover:text-white transition duration-300">
+
+Cookie Policy
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="text-center">
+
+<span class="block mb-2">
+ 
+Connect with Us
+
+</span>
+
+<div class="flex justify-center space-x-4">
+
+<a href="#" class="hover:text-white transition duration-300">
+
+<ion-icon name="logo-twitter" class="text-2xl"></ion-icon>
+
+</a>
+
+<a href="#" class="hover:text-white transition duration-300">
+
+<ion-icon name="logo-facebook" class="text-2xl"></ion-icon>
+
+</a>
+
+<a href="#" class="hover:text-white transition duration-300">
+
+<ion-icon name="logo-linkedin" class="text-2xl"></ion-icon>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+<script src="https://surecdn.vercel.app/templates/js/smoothx.js"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
