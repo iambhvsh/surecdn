@@ -1,6 +1,7 @@
 const CACHE_NAME = 'smoothx';
 const urlsToCache = [
   'https://surecdn.vercel.app/templates/css/smoothx.css',
+  'https://cdn.tailwindcss.com',
   'https://surecdn.vercel.app/templates/js/smoothx.js',
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL6VZWGiWn_LdaW-Pi1c3C_HDuVGuRHiTtU2sVNCxfBKN_2cBfOiUTHXs3&s=10',
   'https://surecdn.vercel.app/templates/data.json',
@@ -9,7 +10,7 @@ const urlsToCache = [
 ];
 
 const LOCAL_STORAGE_KEY = 'cacheTimestamp';
-const CACHE_EXPIRATION_MS = 3 * 60 * 60 * 1000; // 3 hours in milliseconds
+const CACHE_EXPIRATION_MS = 3 * 60 * 60 * 1000;
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -62,11 +63,9 @@ self.addEventListener('activate', event => {
       );
     })
   );
-  // Perform cache and localStorage cleanup
   cleanupCache();
 });
 
-// Function to clean up cache and localStorage
 function cleanupCache() {
   const timestamp = localStorage.getItem(LOCAL_STORAGE_KEY);
   const now = Date.now();
