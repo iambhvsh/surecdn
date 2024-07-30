@@ -1,1 +1,164 @@
-const CACHE_EXPIRATION_MS=108e5,LOCAL_STORAGE_KEY="cacheTimestamp";function checkAndUpdateCache(){let e=localStorage.getItem(LOCAL_STORAGE_KEY),t=Date.now();(!e||t-e>108e5)&&(clearStorageAndCache(),localStorage.setItem(LOCAL_STORAGE_KEY,t))}async function clearStorageAndCache(){localStorage.clear(),console.log("Local storage cleared");let e=await caches.keys();for(let t of e)await caches.delete(t),console.log(`Cache ${t} cleared`);if("serviceWorker"in navigator){let a=await navigator.serviceWorker.getRegistrations();for(let s of a)await s.unregister(),console.log("Service worker unregistered")}location.reload()}checkAndUpdateCache(),"serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/service-worker.js").then(e=>{console.log("ServiceWorker registration successful with scope: ",e.scope)}).catch(e=>{console.log("ServiceWorker registration failed: ",e)})}),document.addEventListener("DOMContentLoaded",function(){let e=document.getElementById("searchInputDesktop"),t=document.getElementById("searchInputMobile"),a=document.getElementById("searchResultsDesktop"),s=document.getElementById("searchResultsMobile");function i(e){e.classList.remove("block"),e.classList.add("hidden")}async function n(){try{return await (await fetch("data.json")).json()}catch(e){console.error("Error fetching data:",e)}}async function c(e,t){let a=await n();if(a){let s=a.filter(t=>t.name.toLowerCase().includes(e.toLowerCase()));t.innerHTML="",s.forEach(e=>{let t=document.createElement("a");t.href=e.link,t.textContent=e.name,t.classList.add("block","px-3","py-2","rounded-md","text-base","font-medium","text-white","hover:text-black"),t.appendChild(t)}),t.classList.remove("hidden"),t.classList.add("block")}else i(t)}document.addEventListener("click",function(n){let c=e.contains(n.target)||a.contains(n.target),l=t.contains(n.target)||s.contains(n.target);c||i(a),l||i(s)}),e.addEventListener("input",function(){let e=this.value.trim();e.length>0?c(e,a):i(a)}),t.addEventListener("input",function(){let e=this.value.trim();e.length>0?c(e,s):i(s)});let l=localStorage.getItem("theme");l&&r(l);let o=document.getElementById("theme-toggle");function r(e){let t=document.body,a=document.getElementById("main"),s=document.getElementById("footer"),i=document.querySelectorAll(".bg-white"),n=document.getElementById("theme-toggle");"dark"===e?(t.classList.remove("bg-white","text-black"),t.classList.add("bg-black","text-white"),a.classList.remove("bg-white"),a.classList.add("bg-black"),s.classList.add("bg-black"),s.classList.add("border-zinc-700"),i.forEach(e=>{e.classList.remove("bg-white","text-black"),e.classList.add("bg-zinc-900","text-white")}),n.innerHTML='<ion-icon name="sunny" class="text-2xl"></ion-icon>',n.classList.remove("text-black"),n.classList.add("text-white")):(t.classList.remove("bg-black","text-white"),t.classList.add("bg-white","text-black"),a.classList.remove("bg-black"),a.classList.add("bg-white"),s.classList.add("bg-white"),s.classList.remove("border-zinc-700"),i.forEach(e=>{e.classList.remove("bg-zinc-900","text-white"),e.classList.add("bg-white","text-black")}),n.innerHTML='<ion-icon name="moon" class="text-2xl"></ion-icon>',n.classList.remove("text-white"),n.classList.add("text-black"))}o.addEventListener("click",function(){document.body.classList.contains("bg-white")?(r("dark"),localStorage.setItem("theme","dark")):(r("light"),localStorage.setItem("theme","light")),setTimeout(()=>{location.reload()},1)})});const menuButton=document.getElementById("menuButton");menuButton&&menuButton.addEventListener("click",function(){let e=document.getElementById("dropdownMenu");e&&(e.classList.contains("opacity-0")?(e.classList.remove("opacity-0","max-h-0"),e.classList.add("opacity-100","max-h-screen")):(e.classList.remove("opacity-100","max-h-screen"),e.classList.add("opacity-0","max-h-0")))});const clearButton=document.getElementById("clear-data");clearButton.addEventListener("click",async function(){await clearStorageAndCache()});
+document.addEventListener("DOMContentLoaded", () => {
+  const CACHE_EXPIRATION_MS = 108e5; // 3 hours
+  const LOCAL_STORAGE_KEY = "cacheTimestamp";
+
+  checkAndUpdateCache();
+  registerServiceWorker();
+  initializeComponents();
+
+  async function checkAndUpdateCache() {
+    const cacheTimestamp = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const currentTime = Date.now();
+
+    if (!cacheTimestamp || currentTime - cacheTimestamp > CACHE_EXPIRATION_MS) {
+      await clearStorageAndCache();
+      localStorage.setItem(LOCAL_STORAGE_KEY, currentTime);
+    }
+  }
+
+  async function clearStorageAndCache() {
+    localStorage.clear();
+    console.log("Local storage cleared");
+
+    const cacheKeys = await caches.keys();
+    for (const cacheKey of cacheKeys) {
+      await caches.delete(cacheKey);
+      console.log(`Cache ${cacheKey} cleared`);
+    }
+
+    if ('serviceWorker' in navigator) {
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      for (const registration of registrations) {
+        await registration.unregister();
+        console.log("Service worker unregistered");
+      }
+    }
+
+    location.reload();
+  }
+
+  function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => console.log("ServiceWorker registered with scope:", registration.scope))
+          .catch(error => console.log("ServiceWorker registration failed:", error));
+      });
+    }
+  }
+
+  function initializeComponents() {
+    const components = [
+      { type: 'search', inputs: ["searchInputDesktop", "searchInputMobile"], results: ["searchResultsDesktop", "searchResultsMobile"], dataUrl: "data.json" },
+      { type: 'themeToggle', toggleId: "theme-toggle" },
+      { type: 'menuToggle', buttonId: "menuButton", menuId: "dropdownMenu" },
+      { type: 'clearData', buttonId: "clear-data" }
+    ];
+
+    components.forEach(component => {
+      switch (component.type) {
+        case 'search':
+          component.inputs.forEach((inputId, index) => createSearchComponent(inputId, component.results[index], component.dataUrl));
+          break;
+        case 'themeToggle':
+          createThemeToggleComponent(component.toggleId);
+          break;
+        case 'menuToggle':
+          createMenuToggleComponent(component.buttonId, component.menuId);
+          break;
+        case 'clearData':
+          initializeClearData(component.buttonId);
+          break;
+      }
+    });
+  }
+
+  function createSearchComponent(inputId, resultsId, dataUrl) {
+    const searchInput = document.getElementById(inputId);
+    const searchResults = document.getElementById(resultsId);
+
+    document.addEventListener("click", event => {
+      if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+        toggleElement(searchResults, false);
+      }
+    });
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.trim();
+      query.length > 0 ? showResults(query, searchResults) : toggleElement(searchResults, false);
+    });
+
+    async function fetchData() {
+      try {
+        const response = await fetch(dataUrl);
+        return response.json();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    async function showResults(query, resultsContainer) {
+      const data = await fetchData();
+      if (data) {
+        const filteredData = data.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+        resultsContainer.innerHTML = filteredData.map(item =>
+          `<a href="${item.link}" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-black">${item.name}</a>`
+        ).join('');
+        toggleElement(resultsContainer, true);
+      } else {
+        toggleElement(resultsContainer, false);
+      }
+    }
+  }
+
+  function createThemeToggleComponent(toggleButtonId) {
+    const themeToggleButton = document.getElementById(toggleButtonId);
+    const theme = localStorage.getItem("theme");
+    if (theme) applyTheme(theme);
+
+    themeToggleButton.addEventListener("click", () => {
+      const newTheme = document.body.classList.contains("bg-white") ? "dark" : "light";
+      applyTheme(newTheme);
+      localStorage.setItem("theme", newTheme);
+      setTimeout(() => location.reload(), 1);
+    });
+
+    function applyTheme(theme) {
+      const classes = ["bg-white", "bg-black", "text-black", "text-white", "bg-zinc-900", "border-zinc-700"];
+      const elements = [document.body, document.getElementById("main"), document.getElementById("footer"), ...document.querySelectorAll(".bg-white")];
+      
+      elements.forEach(el => {
+        if (el) classes.forEach(cls => el.classList.toggle(cls, theme === "dark"));
+      });
+      
+      themeToggleButton.innerHTML = theme === "dark" 
+        ? '<ion-icon name="sunny" class="text-2xl"></ion-icon>' 
+        : '<ion-icon name="moon" class="text-2xl"></ion-icon>';
+    }
+  }
+
+  function createMenuToggleComponent(buttonId, menuId) {
+    const menuButton = document.getElementById(buttonId);
+    const dropdownMenu = document.getElementById(menuId);
+
+    if (menuButton && dropdownMenu) {
+      menuButton.addEventListener("click", () => {
+        toggleElement(dropdownMenu, !dropdownMenu.classList.contains("opacity-100"));
+      });
+    }
+  }
+
+  function initializeClearData(clearButtonId) {
+    const clearButton = document.getElementById(clearButtonId);
+    if (clearButton) {
+      clearButton.addEventListener("click", async () => {
+        await clearStorageAndCache();
+      });
+    }
+  }
+
+  function toggleElement(element, show) {
+    element.classList.toggle("block", show);
+    element.classList.toggle("hidden", !show);
+  }
+});
