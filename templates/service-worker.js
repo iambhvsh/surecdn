@@ -1,5 +1,3 @@
-// service-worker.js
-
 const CACHE_NAME = 'smoothx-cache-v1';
 const CACHE_EXPIRATION_MS = 259200000; // 3 days
 const MAX_CACHE_SIZE = 50; // maximum number of cache entries
@@ -20,44 +18,64 @@ const resourcesToCache = [
   'https://surecdn.vercel.app/templates/fonts/OnePlusSansDisplay-45Lt.woff',
 ];
 
-self.addEventListener('install', async event => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    (async () => {
-      const cache = await caches.open(CACHE_NAME);
-      await cache.addAll(resourcesToCache);
-    })()
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(resourcesToCache);
+    })
   );
 });
 
-self.addEventListener('fetch', async event => {
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+
+self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
 
-  // Handle offline requests
-  if (!navigator.onLine) {
+  if (url.origin === location.origin) {
     if (url.pathname === '/') {
       event.respondWith(caches.match(OFFLINE_URL));
-    } else {
-      event.respondWith(caches.match(request));
+      return;
     }
-    return;
   }
 
-  // Handle cache hits
-  const cache = await caches.open(CACHE_NAME);
-  const cachedResponse = await cache.match(request);
-  if (cachedResponse) {
-    event.respondWith(cachedResponse);
-    return;
-  }
+  event.respondWith(
+    caches.match(request).then(cachedResponse => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
 
-  // Handle cache misses
-  try {
-    const response = await fetch(request);
-    event.respondWith(response);
-    cache.put(request, response.clone());
-  } catch (error) {
-    console.error('Error fetching resource:', error);
-    event.respondWith(caches.match(OFFLINE_URL));
-  }
+      return fetch(request).then(networkResponse => {
+        return caches.open(CACHE_NAME).then(cache => {
+          cache.put(request, networkResponse.clone());
+          enforceCacheSizeLimit(CACHE_NAME, MAX_CACHE_SIZE);
+          return networkResponse;
+        });
+      }).catch(() => {
+        return caches.match(OFFLINE_URL);
+      });
+    })
+  );
 });
+
+function enforceCacheSizeLimit(cacheName, maxItems) {
+  caches.open(cacheName).then(cache => {
+    cache.keys().then(keys => {
+      if (keys.length > maxItems) {
+        cache.delete(keys[0]).then(enforceCacheSizeLimit(cacheName, maxItems));
+      }
+    });
+  });
+}
